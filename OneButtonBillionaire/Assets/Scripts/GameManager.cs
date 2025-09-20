@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     
     public InputManager inputManager;
+    public BillionaireState billionaire;
     public TextMeshProUGUI objectiveLabel;
     public TextMeshProUGUI resultLabel;
 
@@ -75,17 +76,28 @@ public class GameManager : MonoBehaviour
             answers.Add((entries.ElementAt(i), answer[i + 1]));
         }
   
-        // Shuffle the list using LINQ and OrderBy
-        var rnd = new System.Random();
-        var randomized = answers.OrderBy(item => rnd.Next());
+        answers = ShuffleList(answers);
         
-        for (int i = 0; i < randomized.Count(); i++)
+        for (int i = 0; i < answerUis.Length; i++)
         {
             var currentAnswer = answers.ElementAt(i);
             answerUis[i].optionText.text = currentAnswer.Item2;
             answerUis[i].letterText.text = currentAnswer.Item1.Item1.ToString();
             answerUis[i].morseCodeText.text = currentAnswer.Item1.Item2;
         }
+    }
+
+    private List<((Letter, string), string)> ShuffleList(List<((Letter, string), string)> listToShuffle)
+    {
+        System.Random rand = new System.Random();
+        for (int i = listToShuffle.Count - 1; i > 0; i--)
+        {
+            int k = rand.Next(i + 1);
+            // Swap
+            (listToShuffle[k], listToShuffle[i]) = (listToShuffle[i], listToShuffle[k]);
+        }
+
+        return listToShuffle;
     }
 
     private void clearEntries()
@@ -142,5 +154,6 @@ public class GameManager : MonoBehaviour
     {
         var isCorrect = inputManager.InputIsCorrect(correctMorseCode);
         resultLabel.text = isCorrect? "CORRECT" : "WRONG";
+        billionaire.SetState(isCorrect ? BillionaireMood.HAPPY : BillionaireMood.MAD);
     }
 }

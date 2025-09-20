@@ -549,6 +549,7 @@ GameObject:
   - component: {fileID: 442622082}
   - component: {fileID: 442622084}
   - component: {fileID: 442622083}
+  - component: {fileID: 442622085}
   m_Layer: 5
   m_Name: Billionaire
   m_TagString: Untagged
@@ -595,7 +596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5151253960417044779, guid: b365ad7671c184b2e88b4958f0e8698e, type: 3}
+  m_Sprite: {fileID: -4550267116763011654, guid: 32b31b5c4bca3470caf567a34b6ab625, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -613,6 +614,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442622081}
   m_CullTransparentMesh: 1
+--- !u!114 &442622085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442622081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 550d05181ba4d46aabcb8bd01017c306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  neutral: {fileID: -4550267116763011654, guid: 32b31b5c4bca3470caf567a34b6ab625, type: 3}
+  happy: {fileID: 4559773245462039918, guid: c71d998e290294477a71120ea04c2f87, type: 3}
+  mad: {fileID: 2685190725544417294, guid: d718ca41f917a4b9da394060aa1196fe, type: 3}
+  image: {fileID: 442622083}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,7 +1358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: How much is a
+  m_text: How much is
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1466,6 +1483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   inputManager: {fileID: 1418471673}
+  billionaire: {fileID: 442622085}
   objectiveLabel: {fileID: 923107710}
   resultLabel: {fileID: 1956152062}
   answerUis:
