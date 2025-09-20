@@ -1505,7 +1505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
   inputLabel: {fileID: 697436191}
-  morseTime: 5
+  morseTime: 6
   shortInputMax: 0.2
 --- !u!1 &1541256476
 GameObject:

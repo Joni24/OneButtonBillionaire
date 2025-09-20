@@ -9,9 +9,9 @@ public static class MorseAlphabet
         { Letter.A, ".-" },
         { Letter.B, "-..." },
         { Letter.C, "-.-." },
-        // { Letter.D, "-.." },
-        // { Letter.E, "." },
-        // { Letter.F, "..-." },
+        { Letter.D, "-.." },
+        { Letter.E, "." },
+        { Letter.F, "..-." },
     };
 
     public static (Letter, string) GetRandomMorseLetter()
