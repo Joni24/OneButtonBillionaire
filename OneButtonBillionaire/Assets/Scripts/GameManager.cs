@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     
     public InputManager inputManager;
     public TextMeshProUGUI objectiveLabel;
+    public TextMeshProUGUI resultLabel;
 
     public AnswerUI[] answerUis;
     
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private HashSet<(Letter, string)> used = new System.Collections.Generic.HashSet<(Letter, string)>();
     private List<(Letter, string)> entries = new List<(Letter, string)>();
-    private Letter correctLetter;
+    private string correctMorseCode = "";
     private string[] answer;
     
     private List<((Letter, string), string)> answers = new List<((Letter, string), string)>();
@@ -54,8 +55,9 @@ public class GameManager : MonoBehaviour
         entries.Add(entry);
         used.Add(entry);
 
-        correctLetter = entries.ElementAt(Random.Range(0, entries.Count - 1)).Item1;
-        Debug.Log(correctLetter);
+        var randomElement = entries.ElementAt(Random.Range(0, entries.Count - 1));
+        correctMorseCode = randomElement.Item2;
+        Debug.Log(randomElement.Item1);
     }
 
     private void SetUpQuestion()
@@ -121,7 +123,9 @@ public class GameManager : MonoBehaviour
                 // Execute your logic for invalid input
             }
 
+            EvaluateAnswer();
             NewQuestion();
+            
             Debug.Log("5 seconds have passed!");
         }
     }
@@ -132,5 +136,11 @@ public class GameManager : MonoBehaviour
         setEntries();
         SetUpQuestion();
         timer = 0f;
+    }
+
+    private void EvaluateAnswer()
+    {
+        var isCorrect = inputManager.InputIsCorrect(correctMorseCode);
+        resultLabel.text = isCorrect? "CORRECT" : "WRONG";
     }
 }

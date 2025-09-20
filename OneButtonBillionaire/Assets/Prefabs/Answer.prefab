@@ -157,6 +157,7 @@ MonoBehaviour:
   optionText: {fileID: 7035008943841250307}
   letterText: {fileID: 6975568254974924596}
   morseCodeText: {fileID: 7364980117368274528}
+  background: {fileID: 4532924015275287735}
 --- !u!1 &7522883079083156747
 GameObject:
   m_ObjectHideFlags: 0
