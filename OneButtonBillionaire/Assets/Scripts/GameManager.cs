@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     
     public InputManager inputManager;
+    public AudioManager audioManager;
     public BillionaireState billionaire;
     public TextMeshProUGUI objectiveLabel;
     public TextMeshProUGUI resultLabel;
@@ -112,6 +113,7 @@ public class GameManager : MonoBehaviour
     {
         Answers.ResetUsedAnswers();
         NewQuestion();
+        audioManager.PlayMusic();
        // Debug.Log($"GameManager started: correct={entryA}, B={entryB}, C={entryC}");
     }
 
@@ -154,7 +156,16 @@ public class GameManager : MonoBehaviour
     {
         var isCorrect = inputManager.InputIsCorrect(correctMorseCode);
         _score = isCorrect ? _score + 100 : _score - 100;
-
+        if (isCorrect)
+        {
+            audioManager.PlayHappySound();
+        }
+        else
+        {
+            audioManager.PlayMadSound();
+        }
+        
+        
         var correctText = isCorrect ? "CORRECT" : "WRONG";
         resultLabel.text = $"Score: {_score}";
 
