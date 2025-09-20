@@ -8,23 +8,24 @@ public class AudioManager : MonoBehaviour
     public List<AudioClip> happySFX;
     public List<AudioClip> madSFX;
 
-    public AudioSource _audioSource;
+    public AudioSource _musicAudioSource;
+    public AudioSource _sfxAudioSource;
 
     public void PlayMusic()
     {
-        _audioSource.clip = music;
-        _audioSource.Play();
+        _musicAudioSource.clip = music;
+        _musicAudioSource.Play();
     }
 
     public void PlayHappySound()
     {
         var radom = Random.Range(0, happySFX.Count);
-        _audioSource.PlayOneShot(happySFX.ElementAt(radom));
+        _sfxAudioSource.PlayOneShot(happySFX.ElementAt(radom));
     }
 
     public void PlayMadSound()
     {
         var radom = Random.Range(0, madSFX.Count);
-        _audioSource.PlayOneShot(madSFX.ElementAt(radom));
+        _sfxAudioSource.PlayOneShot(madSFX.ElementAt(radom));
     }
 }
