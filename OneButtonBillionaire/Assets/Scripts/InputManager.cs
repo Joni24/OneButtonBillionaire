@@ -5,16 +5,13 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public TextMeshProUGUI inputLabel;
-
-    private const float MorseTime = 5f;
-    private const float ShortInputMax = 0.1f;
+ 
+    public float morseTime = 5f;
+    public float shortInputMax = 0.1f;
 
     private bool _hasStartedInput = false;
     private DateTime _inputTime = DateTime.MaxValue;
     private string _inputString = "";
-
-    private string A = ".-";
-    private string B = "-...";
 
     private void Update()
     {
@@ -25,23 +22,19 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1"))
         {
-            CheckMorse();
+            UpdateMorseCode();
         }
     }
 
-    private void CheckMorse()
+    private void UpdateMorseCode()
     {
         var duration = (DateTime.Now - _inputTime).TotalSeconds;
-        Debug.Log($"Duration {duration}");
+        UpdateInput(duration <= shortInputMax ? "." : "-");
+    }
 
-        if (duration <= ShortInputMax)
-        {
-            UpdateInput(".");
-        }
-        else
-        {
-            UpdateInput("-");
-        }
+    public bool InputIsCorrect(string expectedMorseCode)
+    {
+        return _inputString.Equals(expectedMorseCode);
     }
 
     private void UpdateInput(string input)

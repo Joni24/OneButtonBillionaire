@@ -11,4 +11,11 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
     }
+
+    private void Start()
+    {
+        var entry = MorseAlphabet.GetRandomEntry();
+        
+        Debug.Log(entry);
+    }
 }
