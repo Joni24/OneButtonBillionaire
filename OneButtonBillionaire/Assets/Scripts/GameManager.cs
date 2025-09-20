@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     private bool _inputValid = false;
     private int _score = 0;
 
@@ -21,10 +20,6 @@ public class GameManager : MonoBehaviour
     private string entryA = "";
     private string entryB = "";
     private string entryC = "";
-
-
-
-
 
     private void setEntries()
     {
@@ -78,8 +73,6 @@ public class GameManager : MonoBehaviour
                 //displayResults(false);
                 // Execute your logic for invalid input
             }
-
-
 
             setEntries();
             timer = 0f;
