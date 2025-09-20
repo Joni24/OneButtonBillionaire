@@ -57,10 +57,6 @@ public class GameManager : MonoBehaviour
 
         entries.Add(entry);
         used.Add(entry);
-
-        var randomElement = entries.ElementAt(Random.Range(0, entries.Count - 1));
-        correctMorseCode = randomElement.Item2;
-        Debug.Log(randomElement.Item1);
     }
 
     private void SetUpQuestion()
@@ -77,12 +73,16 @@ public class GameManager : MonoBehaviour
         {
             answers.Add((entries.ElementAt(i), answer[i + 1]));
         }
-  
-        answers = ShuffleList(answers);
+        
+        correctMorseCode = answers.ElementAt(0).Item1.Item2;
+        Debug.Log(correctMorseCode);
+        
+        var randomAnswers = ShuffleList(answers);
         
         for (int i = 0; i < answerUis.Length; i++)
         {
-            var currentAnswer = answers.ElementAt(i);
+            var currentAnswer = randomAnswers.ElementAt(i);
+
             answerUis[i].optionText.text = currentAnswer.Item2;
             answerUis[i].letterText.text = currentAnswer.Item1.Item1.ToString();
             answerUis[i].morseCodeText.text = currentAnswer.Item1.Item2;
