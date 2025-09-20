@@ -14,8 +14,9 @@ public static class MorseAlphabet
         // { Letter.F, "..-." },
     };
 
-    public static string GetRandomMorseLetter()
+    public static (Letter, string) GetRandomMorseLetter()
     {
-        return letters.ElementAt(Random.Range(0, letters.Count)).Value;
+        var randomElement = letters.ElementAt(Random.Range(0, letters.Count));
+        return (randomElement.Key, randomElement.Value);
     }
 }

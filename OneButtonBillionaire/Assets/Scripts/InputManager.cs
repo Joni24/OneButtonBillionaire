@@ -48,5 +48,6 @@ public class InputManager : MonoBehaviour
         inputLabel.text = "";
         _inputString = "";
         _hasStartedInput = true;
+        inputLabel.text = _inputString;
     }
 }
