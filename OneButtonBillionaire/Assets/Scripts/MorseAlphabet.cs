@@ -8,10 +8,13 @@ public static class MorseAlphabet
     {
         { Letter.A, ".-" },
         { Letter.B, "-..." },
-        { Letter.C, "-.-." }
+        { Letter.C, "-.-." },
+        // { Letter.D, "-.." },
+        // { Letter.E, "." },
+        // { Letter.F, "..-." },
     };
 
-    public static string GetRandomEntry()
+    public static string GetRandomMorseLetter()
     {
         return letters.ElementAt(Random.Range(0, letters.Count)).Value;
     }

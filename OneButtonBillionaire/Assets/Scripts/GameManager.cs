@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        var entry = MorseAlphabet.GetRandomEntry();
+        var entry = MorseAlphabet.GetRandomMorseLetter();
         
         Debug.Log(entry);
     }
