@@ -125,20 +125,6 @@ public class GameManager : MonoBehaviour
         
         if (timer >= interval)
         {
-            // Place your timed logic here
-            if(_inputValid)
-            {
-                _score += 100;
-                //displayResults(true);
-                // Execute your logic for valid input
-            }
-            else
-            {
-                _score -= 100;
-                //displayResults(false);
-                // Execute your logic for invalid input
-            }
-
             EvaluateAnswer();
             NewQuestion();
             
@@ -167,7 +153,11 @@ public class GameManager : MonoBehaviour
     private void EvaluateAnswer()
     {
         var isCorrect = inputManager.InputIsCorrect(correctMorseCode);
-        resultLabel.text = isCorrect? "CORRECT" : "WRONG";
+        _score = isCorrect ? _score + 100 : _score - 100;
+
+        var correctText = isCorrect ? "CORRECT" : "WRONG";
+        resultLabel.text = $"Score: {_score}";
+
         billionaire.SetState(isCorrect ? BillionaireMood.HAPPY : BillionaireMood.MAD);
     }
 }
