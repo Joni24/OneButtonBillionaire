@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public BillionaireState billionaire;
     public TextMeshProUGUI objectiveLabel;
     public TextMeshProUGUI resultLabel;
+    public Image timerBar;
 
     public AnswerUI[] answerUis;
     
@@ -119,6 +121,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
+        UpdateTimerBar();
+        
         if (timer >= interval)
         {
             // Place your timed logic here
@@ -139,6 +143,16 @@ public class GameManager : MonoBehaviour
             NewQuestion();
             
             Debug.Log("5 seconds have passed!");
+        }
+    }
+
+    private void UpdateTimerBar()
+    {
+        if (timer > 0)
+        {
+            var scale = timerBar.rectTransform.localScale;
+            scale.x = (interval - timer) / interval;
+            timerBar.transform.localScale = scale;
         }
     }
     
