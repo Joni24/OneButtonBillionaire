@@ -1509,7 +1509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
   inputLabel: {fileID: 697436191}
-  morseTime: 6
+  audioManager: {fileID: 1418471674}
   shortInputMax: 0.2
 --- !u!114 &1418471674
 MonoBehaviour:
@@ -1537,6 +1537,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 896ae0243b6ac4cd89251f0cef2b2c7f, type: 3}
   - {fileID: 8300000, guid: 94dbcd4998a544398b89e1682cf800ba, type: 3}
   - {fileID: 8300000, guid: 2ccab1c86f5f54b469f3cd34fe325fba, type: 3}
+  shortMorse: {fileID: 8300000, guid: f3c5e68ae320b4533bfce5c4cd70abbd, type: 3}
+  longMorse: {fileID: 8300000, guid: a4f623ff24e694727b5c5d2b8e0962d8, type: 3}
   _musicAudioSource: {fileID: 1436018816}
   _sfxAudioSource: {fileID: 1519574373}
 --- !u!1 &1436018814

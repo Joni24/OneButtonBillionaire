@@ -7,6 +7,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip music;
     public List<AudioClip> happySFX;
     public List<AudioClip> madSFX;
+    public AudioClip shortMorse;
+    public AudioClip longMorse;
 
     public AudioSource _musicAudioSource;
     public AudioSource _sfxAudioSource;
@@ -19,13 +21,18 @@ public class AudioManager : MonoBehaviour
 
     public void PlayHappySound()
     {
-        var radom = Random.Range(0, happySFX.Count);
-        _sfxAudioSource.PlayOneShot(happySFX.ElementAt(radom));
+        var random = Random.Range(0, happySFX.Count);
+        _sfxAudioSource.PlayOneShot(happySFX.ElementAt(random));
     }
 
     public void PlayMadSound()
     {
-        var radom = Random.Range(0, madSFX.Count);
-        _sfxAudioSource.PlayOneShot(madSFX.ElementAt(radom));
+        var random = Random.Range(0, madSFX.Count);
+        _sfxAudioSource.PlayOneShot(madSFX.ElementAt(random));
+    }
+
+    public void PlayMorseSound(bool isShort)
+    {
+        _sfxAudioSource.PlayOneShot(isShort ? shortMorse : longMorse);
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public TextMeshProUGUI inputLabel;
+    public AudioManager audioManager;
  
-    public float morseTime = 5f;
     public float shortInputMax = 0.1f;
 
     private bool _hasStartedInput = false;
@@ -29,7 +29,9 @@ public class InputManager : MonoBehaviour
     private void UpdateMorseCode()
     {
         var duration = (DateTime.Now - _inputTime).TotalSeconds;
-        UpdateInput(duration <= shortInputMax ? "." : "-");
+        bool isShortMorse = duration <= shortInputMax;
+        UpdateInput(isShortMorse ? "." : "-");
+        // audioManager.PlayMorseSound(isShortMorse);
     }
 
     public bool InputIsCorrect(string expectedMorseCode)
