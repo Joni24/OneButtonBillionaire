@@ -42,6 +42,11 @@ public static class Answers
         new[] { "Cotton Pads", "$44.99", "$1.29", "$1.59" },
     };
 
+    public static bool IsOutOfAnswers()
+    {
+        return usedAnswers.Count == answers.Count;
+    }
+    
     public static string[] GetRandomAnswer()
     {
         string[] answer;

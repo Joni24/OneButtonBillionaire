@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -62,10 +63,21 @@ public class GameManager : MonoBehaviour
 
     private void SetUpQuestion()
     {
+        if (Answers.IsOutOfAnswers())
+        {
+            EndGame();
+            return;
+        }
+        
         answers.Clear();
         answer = Answers.GetRandomAnswer();
         objectiveLabel.text = answer[0];
         SetUpAnswers();
+    }
+
+    private void EndGame()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void SetUpAnswers()
